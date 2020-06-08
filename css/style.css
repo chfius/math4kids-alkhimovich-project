@@ -59,3 +59,22 @@ p.rules_text {
   text-decoration: none;
   line-height: 1.4em;
 }
+
+.board_field h1 {
+  color: white;
+}
+
+span.example_number {
+  font-size: large;
+  font-weight: bold;
+  color: #33ADFF;
+}
+
+p.study_text {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  color: white;
+  text-shadow: 2px 2px 1px #595959;
+  text-decoration: none;
+  line-height: 1.4em;
+}

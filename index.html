@@ -11,13 +11,21 @@
 <body>
   <div class="wrapper">
     <img src="/img/board.png" alt="board" class="board">
-    <ul id="navbar">
-      <li><a href="index.html">Играть</a></li>
-      <li><a href="index_rules.html">Правила</a></li>
-      <li><a href="index_study.html">Учеба</a></li>
-      <li><a href="#">Лучшие результаты</a></li>
+    <ul id="navbar" class="menu">
+      <li class="menu_item"><a href="index.html">Играть</a></li>
+      <li class="menu_item"><a href="index_rules.html">Правила</a></li>
+      <li class="menu_item"><a href="index_study.html">Учеба</a></li>
+      <li class="menu_item"><a href="#">Лучшие результаты</a></li>
     </ul>
   </div>
+  <audio id="sounds" preload="auto">
+    <source src="snd/menu-item.mp3">
+  </audio>
+  <script>
+    var soundLink = document.getElementById('sounds');
+    var menu_items = document.querySelectorAll('.menu_item');
+    menu_items.forEach((elem) => elem.addEventListener('mouseenter', (() => { soundLink.play() })));
+  </script>
 </body>
 
 </html>

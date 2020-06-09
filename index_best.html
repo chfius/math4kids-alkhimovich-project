@@ -10,7 +10,27 @@
 
 <body>
   <div class="wrapper">
-    <img src="/img/board.png" alt="board" class="board">
+    <div class="board_wrapper">      
+        <table class="best_results">
+          <tr>
+            <td>
+              Имя
+            </td>
+            <td>
+              Результат
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Вася
+            </td>
+            <td>
+              5
+            </td>
+          </tr>
+        </table>      
+      <img src="/img/board.png" alt="board" class="board">
+    </div>
     <ul id="navbar" class="menu">
       <li class="menu_item"><a href="index.html">Играть</a></li>
       <li class="menu_item"><a href="index_rules.html">Правила</a></li>
@@ -18,15 +38,11 @@
       <li class="menu_item"><a href="index_best.html">Лучшие результаты</a></li>
     </ul>
   </div>
-  <audio id="sounds" preload="auto">
-    <source src="snd/menu-item.mp3">
-  </audio>
+
+
+
   <script>
-    //TODO  рабораться почему звук начинает срабатывать только после клика на странице
-    //и почему появляется ошибка в консоли favicon.ico not found 404
-    var soundLink = document.getElementById('sounds');
-    var menu_items = document.querySelectorAll('.menu_item');
-    menu_items.forEach((elem) => elem.addEventListener('mouseenter', (() => { soundLink.play() })));
+
   </script>
 </body>
 

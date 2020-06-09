@@ -81,10 +81,27 @@ p.study_text {
 
 table.best_results {
   margin: 0 30%;
-    padding: 60px 70px;
-    position: absolute;
-    width: 40%;
-    font-size: large;
-    font-weight: bold;
-    color: #33ADFF;
+  padding: 60px 70px;
+  position: absolute;
+  width: 40%;
+  font-size: large;
+  font-weight: bold;
+  color: #33ADFF;
+}
+
+.numbers {
+  display: flex;
+  justify-content: flex-start;
+  position: absolute;
+  left: 15%;
+  top: 60%;
+}
+
+.math_sign {
+  top: 75%;
+  left: 25%;
+}
+
+.numbers img {  
+  height: 80px;
 }

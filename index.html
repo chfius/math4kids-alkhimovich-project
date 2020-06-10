@@ -11,28 +11,31 @@
 <body>
   <div class="wrapper">
     <div class="board_wrapper">
+      <div class="board_field">
+        <div class="math_expression" id="math_expression" ondrop="mathExpressionDrop(event,this)"
+          ondragover="mathExpressionDragOver(event)">
+        </div>
+      </div>
       <div class="numbers">
-        <div><img src="img/1.png" alt="1"></div>
-        <div><img src="img/2.png" alt="2"></div>
-        <div><img src="img/3.png" alt="3"></div>
-        <div><img src="img/4.png" alt="4"></div>
-        <div><img src="img/5.png" alt="5"></div>
-        <div><img src="img/6.png" alt="6"></div>
-        <div><img src="img/7.png" alt="7"></div>
-        <div><img src="img/8.png" alt="8"></div>
-        <div><img src="img/9.png" alt="9"></div>
-        <div><img src="img/0.png" alt="0"></div>
+        <img class="symbol" src="img/1.png" alt="1" ondragstart="symbolDragStart(event)" ondragend="symbolDragEnd(event)">
+        <img class="symbol" src="img/2.png" alt="2" ondragstart="symbolDragStart(event)" ondragend="symbolDragEnd(event)">
+        <img class="symbol" src="img/3.png" alt="3" ondragstart="symbolDragStart(event)" ondragend="symbolDragEnd(event)">
+        <img class="symbol" src="img/4.png" alt="4" ondragstart="symbolDragStart(event)" ondragend="symbolDragEnd(event)">
+        <img class="symbol" src="img/5.png" alt="5" ondragstart="symbolDragStart(event)" ondragend="symbolDragEnd(event)">
+        <img class="symbol" src="img/6.png" alt="6" ondragstart="symbolDragStart(event)" ondragend="symbolDragEnd(event)">
+        <img class="symbol" src="img/7.png" alt="7" ondragstart="symbolDragStart(event)" ondragend="symbolDragEnd(event)">
+        <img class="symbol" src="img/8.png" alt="8" ondragstart="symbolDragStart(event)" ondragend="symbolDragEnd(event)">
+        <img class="symbol" src="img/9.png" alt="9" ondragstart="symbolDragStart(event)" ondragend="symbolDragEnd(event)">
+        <img class="symbol" src="img/0.png" alt="0" ondragstart="symbolDragStart(event)" ondragend="symbolDragEnd(event)">
       </div>
       <div class="numbers math_sign">
-        <div><img src="img/plus.png" alt="plus"></div>
-        <div><img src="img/minus.png" alt="minus" style="width: 100px; height: 30px; margin: 15px 0;"></div>
-        <div><img src="img/division.png" alt="division"></div>
-        <div><img src="img/multiplic.png" alt="multiplic"></div>
-        <div><img src="img/equal.png" alt="equal"></div>
+        <img src="img/plus.png" class="symbol" alt="plus" id="plus" ondragstart="symbolDragStart(event)" ondragend="symbolDragEnd(event)">
+        <img src="img/minus.png" class="symbol" alt="minus" id="minus" style="width: 100px; height: 30px; margin: 15px 0;" ondragstart="symbolDragStart(event)" ondragend="symbolDragEnd(event)">
+        <img src="img/division.png" class="symbol" alt="division" id="division" ondragstart="symbolDragStart(event)" ondragend="symbolDragEnd(event)">
+        <img src="img/multiplic.png" class="symbol" alt="multiplic" id="multiplic" ondragstart="symbolDragStart(event)" ondragend="symbolDragEnd(event)">
+        <img src="img/equal.png" class="symbol" alt="equal" id="equal" ondragstart="symbolDragStart(event)" ondragend="symbolDragEnd(event)">
       </div>
-      <div class="board_field">
 
-      </div>
       <img src="/img/board.png" alt="board" class="board">
     </div>
     <ul id="navbar" class="menu">
@@ -51,6 +54,35 @@
     var soundLink = document.getElementById('sounds');
     var menu_items = document.querySelectorAll('.menu_item');
     menu_items.forEach((elem) => elem.addEventListener('mouseenter', (() => { soundLink.play() })));
+  </script>
+
+  <script>
+    var draggedSymbol = null;
+
+    function symbolDragStart(EO) {
+      EO = EO || window.event;
+      draggedSymbol = EO.target;
+    }
+
+    function symbolDragEnd(EO) {
+      EO = EO || window.event;
+      draggedSymbol = null;
+    }
+
+    function mathExpressionDragOver(EO) {
+      EO = EO || window.event;
+      // по-умолчанию ронять элементы в div запрещено, отменяем
+      EO.preventDefault();
+    }
+
+    function mathExpressionDrop(EO, Div) {
+      // добавлен символ в формуле
+      EO = EO || window.event;
+      EO.preventDefault();
+      if (draggedSymbol)
+        Div.appendChild(draggedSymbol);
+    }
+
   </script>
 </body>
 

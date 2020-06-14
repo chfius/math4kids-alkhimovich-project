@@ -18,6 +18,7 @@
             ondragover="mathExpressionDragOver(event)"
           ></div>
         </div>
+        <div class="button" id="check_answer" onclick="checkAnswer()">Проверить ответ</div>
         <div class="numbers" ondrop="numbersDrop(event,this)" ondragover="numbersDragOver(event)">
           <img
             class="symbol"
@@ -90,7 +91,11 @@
             ondragend="symbolDragEnd(event)"
           />
         </div>
-        <div class="numbers math_sign">
+        <div
+          class="numbers math_sign"
+          ondrop="numbersDrop(event,this)"
+          ondragover="numbersDragOver(event)"
+        >
           <img
             src="img/plus.png"
             class="symbol"

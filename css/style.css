@@ -29,13 +29,13 @@ div.wrapper {
   margin-top: 20px;
   text-decoration: none;
   font-weight: bold;
-  border-left: 5px solid #33ADFF;
+  border-left: 5px solid #33adff;
   display: block;
 }
 
 #navbar a:hover {
   background-color: #666;
-  border-left: 5px solid #3333FF;
+  border-left: 5px solid #3333ff;
 }
 
 img.board {
@@ -61,14 +61,15 @@ p.rules_text {
   line-height: 1.4em;
 }
 
-.board_field h1, h3 {
+.board_field h1,
+h3 {
   color: white;
 }
 
 span.example_number {
   font-size: large;
   font-weight: bold;
-  color: #33ADFF;
+  color: #33adff;
 }
 
 .study_text {
@@ -87,7 +88,7 @@ table.best_results {
   width: 40%;
   font-size: large;
   font-weight: bold;
-  color: #33ADFF;
+  color: #33adff;
 }
 
 .numbers {
@@ -115,5 +116,30 @@ table.best_results {
   padding-top: 20px;
   width: 90%;
   height: 100px;
-  border: solid 2px #33ADFF;
+  border: solid 2px #33adff;
+}
+
+div.button {
+  display: none;
+  position: absolute;
+  cursor: pointer;
+  top: 40%;
+  left: 43%;
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+  padding: 0.8em 1em calc(0.8em + 3px);
+  border-radius: 3px;
+  background: rgb(64, 199, 129);
+  box-shadow: 0 -3px rgb(53, 167, 110) inset;
+  transition: 0.2s;
+}
+
+div.button:hover {
+  background: rgb(53, 167, 110);
+}
+
+div.button:active {
+  background: rgb(33, 147, 90);
+  box-shadow: 0 3px rgb(33, 147, 90) inset;
 }

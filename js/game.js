@@ -26,13 +26,18 @@ function mathExpressionDrop(EO, Div) {
   if (draggedSymbol) {
     Div.appendChild(draggedSymbol);
   }
-  //если последний символ = то считаем выражение
+  //если последний символ "равно" то считаем выражение
   if (draggedSymbol.alt == '=') {
     result = evalExpr();
+    document.getElementById('check_answer').style.display = 'block'; //покажем кнопку "Проверить ответ"
   }
-  //если выражение высчитано, то смотрим ответ
+}
+
+function checkAnswer() {
   if (result == readAnswer()) {
-    console.log('You are right!');
+    alert('Правильно!');
+  } else {
+    alert('Ошибка!');
   }
 }
 
@@ -67,5 +72,8 @@ function numbersDrop(EO, Div) {
   EO.preventDefault();
   if (draggedSymbol) {
     Div.appendChild(draggedSymbol);
+  }
+  if (draggedSymbol.alt == '=') {
+    document.getElementById('check_answer').style.display = 'none'; //спрячем кнопку "Проверить ответ"
   }
 }

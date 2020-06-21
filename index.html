@@ -5,38 +5,12 @@
     <title>Математика для детей</title>
     <link rel="stylesheet" href="css/style.css" />
     <script src="js/jquery-3.5.1.js"></script>
-    <script src="js/game.js" async></script>
-    <script src="js/board.js" async></script>
   </head>
 
   <body>
     <div class="wrapper">
       <div class="board_wrapper">
-        <section id="game">
-          <div class="board_field">
-            <div class="math_expression" id="math_expression" ondrop="mathExpressionDrop(event,this)" ondragover="mathExpressionDragOver(event)"></div>
-          </div>
-          <div class="button" id="check_answer" onclick="checkAnswer()">Проверить ответ</div>
-          <div class="numbers" id="numbers" ondrop="numbersDrop(event,this)" ondragover="numbersDragOver(event)">
-            <img class="symbol" src="img/1.png" style="order: 1;" alt="1" ondragstart="symbolDragStart(event)" ondragend="symbolDragEnd(event)" />
-            <img class="symbol" src="img/2.png" style="order: 2;" alt="2" ondragstart="symbolDragStart(event)" ondragend="symbolDragEnd(event)" />
-            <img class="symbol" src="img/3.png" style="order: 3;" alt="3" ondragstart="symbolDragStart(event)" ondragend="symbolDragEnd(event)" />
-            <img class="symbol" src="img/4.png" style="order: 4;" alt="4" ondragstart="symbolDragStart(event)" ondragend="symbolDragEnd(event)" />
-            <img class="symbol" src="img/5.png" style="order: 5;" alt="5" ondragstart="symbolDragStart(event)" ondragend="symbolDragEnd(event)" />
-            <img class="symbol" src="img/6.png" style="order: 6;" alt="6" ondragstart="symbolDragStart(event)" ondragend="symbolDragEnd(event)" />
-            <img class="symbol" src="img/7.png" style="order: 7;" alt="7" ondragstart="symbolDragStart(event)" ondragend="symbolDragEnd(event)" />
-            <img class="symbol" src="img/8.png" style="order: 8;" alt="8" ondragstart="symbolDragStart(event)" ondragend="symbolDragEnd(event)" />
-            <img class="symbol" src="img/9.png" style="order: 9;" alt="9" ondragstart="symbolDragStart(event)" ondragend="symbolDragEnd(event)" />
-            <img class="symbol" src="img/0.png" style="order: 0;" alt="0" ondragstart="symbolDragStart(event)" ondragend="symbolDragEnd(event)" />
-          </div>
-          <div class="numbers math_sign" id="math_signs" ondrop="numbersDrop(event,this)" ondragover="numbersDragOver(event)">
-            <img src="img/plus.png" class="symbol" alt="+" id="plus" ondragstart="symbolDragStart(event)" ondragend="symbolDragEnd(event)" />
-            <img src="img/minus.png" class="symbol minus" alt="-" id="minus" ondragstart="symbolDragStart(event)" ondragend="symbolDragEnd(event)" />
-            <img src="img/division.png" class="symbol" alt="/" id="division" ondragstart="symbolDragStart(event)" ondragend="symbolDragEnd(event)" />
-            <img src="img/multiplic.png" class="symbol" alt="*" id="multiplic" ondragstart="symbolDragStart(event)" ondragend="symbolDragEnd(event)" />
-            <img src="img/equal.png" class="symbol" alt="=" id="equal" ondragstart="symbolDragStart(event)" ondragend="symbolDragEnd(event)" />
-          </div>
-        </section>
+        <section id="game"></section>
         <section id="rules">
           <div class="board_field">
             <p class="rules_text">
@@ -62,7 +36,7 @@
             </p>
             <h3>Свойства сложения</h3>
             <ol class="study_text">
-              <li>От пемены мест слагаемых сумма не меняется. Примеры: <span class="example_number">7 + 3 = 3 + 7 = 10</span></li>
+              <li>От перемены мест слагаемых сумма не меняется. Примеры: <span class="example_number">7 + 3 = 3 + 7 = 10</span></li>
               <li>От прибавления нуля сумма не меняется: <span class="example_number">7 + 0 = 7</span></li>
               <li>
                 Чтобы прибавить к числу сумму двух чисел, нужно вначале прибавить к этому числу первое, а затем к полученной сумме - второе слагаемое: <br /><span
@@ -100,7 +74,7 @@
         <img src="/img/board.png" alt="board" class="board" />
       </div>
       <ul id="navbar" class="menu">
-        <li class="menu_item"><a href="#game">Играть</a></li>
+        <li class="menu_item"><a href="#game" onclick="clickPlay()">Играть</a></li>
         <li class="menu_item"><a href="#rules">Правила</a></li>
         <li class="menu_item"><a href="#study">Учеба</a></li>
         <li class="menu_item"><a href="#best">Лучшие результаты</a></li>
@@ -120,5 +94,7 @@
         );
       });
     </script>
+    <script src="js/board.js" async></script>
+    <script src="js/game.js" async></script>
   </body>
 </html>

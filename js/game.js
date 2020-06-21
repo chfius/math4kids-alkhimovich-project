@@ -83,7 +83,11 @@ function numbersDrop(EO, Div) {
   EO = EO || window.event;
   EO.preventDefault();
   switch (draggedSymbol.alt) {
-    case ('+', '-', '*', '/', '='):
+    case '+':
+    case '-':
+    case '*':
+    case '/':
+    case '=':
       if (draggedSymbol.alt == '=') {
         document.getElementById('check_answer').style.display = 'none'; //спрячем кнопку "Проверить ответ"
       }

@@ -1,11 +1,14 @@
 'use strict';
 
-var draggedSymbol = null;
+var draggedSymbol = null; // символ, который тянем
+var draggedSymbolParentDiv = null; // родитель, откуда тянется символ
+
 var result = null;
 
 function symbolDragStart(EO) {
   EO = EO || window.event;
   draggedSymbol = EO.target;
+  draggedSymbolParentDiv = EO.target.parentNode;
 }
 
 function symbolDragEnd(EO) {
@@ -21,6 +24,7 @@ function mathExpressionDragOver(EO) {
 
 function mathExpressionDrop(EO, Div) {
   // добавлен символ в формуле
+  var cloneSymbol = draggedSymbol.cloneNode(true);
   EO = EO || window.event;
   EO.preventDefault();
   if (draggedSymbol) {
@@ -31,6 +35,11 @@ function mathExpressionDrop(EO, Div) {
     result = evalExpr();
     document.getElementById('check_answer').style.display = 'block'; //покажем кнопку "Проверить ответ"
   }
+  if (draggedSymbolParentDiv.id !== 'math_signs') {
+    //если тянули не знаки мат.операций, то вернем копию числа в исходный div
+    draggedSymbolParentDiv.appendChild(cloneSymbol);
+  }
+  draggedSymbolParentDiv = null;
 }
 
 function checkAnswer() {
@@ -70,9 +79,19 @@ function numbersDragOver(EO) {
 function numbersDrop(EO, Div) {
   EO = EO || window.event;
   EO.preventDefault();
-  if (draggedSymbol) {
+switch (draggedSymbol.alt) {
+  case '+','-','*','/','=':
     Div.appendChild(draggedSymbol);
-  }
+    break;
+  default:
+    draggedSymbol.parentNode.removeChild(draggedSymbol);
+    break;
+}
+
+  /*if (draggedSymbol) {
+    draggedSymbol.parentNode.removeChild(draggedSymbol);
+    //  Div.appendChild(draggedSymbol);
+  }*/
   if (draggedSymbol.alt == '=') {
     document.getElementById('check_answer').style.display = 'none'; //спрячем кнопку "Проверить ответ"
   }

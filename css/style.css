@@ -109,6 +109,12 @@ table.best_results {
   height: 80px;
 }
 
+#minus {
+  width: 100px;
+  height: 30px;
+  margin: 25px 0;
+}
+
 .board_field div {
   margin-top: 20px;
   margin-left: 20px;

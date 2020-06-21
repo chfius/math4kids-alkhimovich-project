@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <title>Математика для детей</title>
     <link rel="stylesheet" href="css/style.css" />
+    <script src="js/jquery-3.5.1.js"></script>
     <script src="js/game.js" async></script>
     <script src="js/board.js" async></script>
   </head>
@@ -109,8 +110,7 @@
       <source src="snd/menu-item.mp3" />
     </audio>
     <script>
-      //TODO: рабораться почему звук начинает срабатывать только после клика на странице
-      document.addEventListener('DOMContentLoaded', () => {
+      $(document).ready(() => {
         var soundLink = document.getElementById('sounds');
         var menu_items = document.querySelectorAll('.menu_item');
         menu_items.forEach((elem) =>

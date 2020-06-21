@@ -33,6 +33,7 @@ function mathExpressionDrop(EO, Div) {
   //если последний символ "равно" то считаем выражение
   if (draggedSymbol.alt == '=') {
     result = evalExpr();
+    //если не вычислиться, значит выражение не верно составлено и кнопка не появиться
     document.getElementById('check_answer').style.display = 'block'; //покажем кнопку "Проверить ответ"
   }
   if (draggedSymbolParentDiv.id !== 'math_signs') {
@@ -79,20 +80,15 @@ function numbersDragOver(EO) {
 function numbersDrop(EO, Div) {
   EO = EO || window.event;
   EO.preventDefault();
-switch (draggedSymbol.alt) {
-  case '+','-','*','/','=':
-    Div.appendChild(draggedSymbol);
-    break;
-  default:
-    draggedSymbol.parentNode.removeChild(draggedSymbol);
-    break;
-}
-
-  /*if (draggedSymbol) {
-    draggedSymbol.parentNode.removeChild(draggedSymbol);
-    //  Div.appendChild(draggedSymbol);
-  }*/
-  if (draggedSymbol.alt == '=') {
-    document.getElementById('check_answer').style.display = 'none'; //спрячем кнопку "Проверить ответ"
+  switch (draggedSymbol.alt) {
+    case ('+', '-', '*', '/', '='):
+      if (draggedSymbol.alt == '=') {
+        document.getElementById('check_answer').style.display = 'none'; //спрячем кнопку "Проверить ответ"
+      }
+      Div.appendChild(draggedSymbol);
+      break;
+    default:
+      draggedSymbol.parentNode.removeChild(draggedSymbol);
+      break;
   }
 }

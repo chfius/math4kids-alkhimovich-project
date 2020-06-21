@@ -11,99 +11,23 @@
     <div class="wrapper">
       <div class="board_wrapper">
         <div class="board_field">
-          <div
-            class="math_expression"
-            id="math_expression"
-            ondrop="mathExpressionDrop(event,this)"
-            ondragover="mathExpressionDragOver(event)"
-          ></div>
+          <div class="math_expression" id="math_expression" ondrop="mathExpressionDrop(event,this)" ondragover="mathExpressionDragOver(event)"></div>
         </div>
         <div class="button" id="check_answer" onclick="checkAnswer()">Проверить ответ</div>
         <div class="numbers" ondrop="numbersDrop(event,this)" ondragover="numbersDragOver(event)">
-          <img
-            class="symbol"
-            src="img/1.png"
-            alt="1"
-            ondragstart="symbolDragStart(event)"
-            ondragend="symbolDragEnd(event)"
-          />
-          <img
-            class="symbol"
-            src="img/2.png"
-            alt="2"
-            ondragstart="symbolDragStart(event)"
-            ondragend="symbolDragEnd(event)"
-          />
-          <img
-            class="symbol"
-            src="img/3.png"
-            alt="3"
-            ondragstart="symbolDragStart(event)"
-            ondragend="symbolDragEnd(event)"
-          />
-          <img
-            class="symbol"
-            src="img/4.png"
-            alt="4"
-            ondragstart="symbolDragStart(event)"
-            ondragend="symbolDragEnd(event)"
-          />
-          <img
-            class="symbol"
-            src="img/5.png"
-            alt="5"
-            ondragstart="symbolDragStart(event)"
-            ondragend="symbolDragEnd(event)"
-          />
-          <img
-            class="symbol"
-            src="img/6.png"
-            alt="6"
-            ondragstart="symbolDragStart(event)"
-            ondragend="symbolDragEnd(event)"
-          />
-          <img
-            class="symbol"
-            src="img/7.png"
-            alt="7"
-            ondragstart="symbolDragStart(event)"
-            ondragend="symbolDragEnd(event)"
-          />
-          <img
-            class="symbol"
-            src="img/8.png"
-            alt="8"
-            ondragstart="symbolDragStart(event)"
-            ondragend="symbolDragEnd(event)"
-          />
-          <img
-            class="symbol"
-            src="img/9.png"
-            alt="9"
-            ondragstart="symbolDragStart(event)"
-            ondragend="symbolDragEnd(event)"
-          />
-          <img
-            class="symbol"
-            src="img/0.png"
-            alt="0"
-            ondragstart="symbolDragStart(event)"
-            ondragend="symbolDragEnd(event)"
-          />
+          <img class="symbol" src="img/1.png" alt="1" ondragstart="symbolDragStart(event)" ondragend="symbolDragEnd(event)" />
+          <img class="symbol" src="img/2.png" alt="2" ondragstart="symbolDragStart(event)" ondragend="symbolDragEnd(event)" />
+          <img class="symbol" src="img/3.png" alt="3" ondragstart="symbolDragStart(event)" ondragend="symbolDragEnd(event)" />
+          <img class="symbol" src="img/4.png" alt="4" ondragstart="symbolDragStart(event)" ondragend="symbolDragEnd(event)" />
+          <img class="symbol" src="img/5.png" alt="5" ondragstart="symbolDragStart(event)" ondragend="symbolDragEnd(event)" />
+          <img class="symbol" src="img/6.png" alt="6" ondragstart="symbolDragStart(event)" ondragend="symbolDragEnd(event)" />
+          <img class="symbol" src="img/7.png" alt="7" ondragstart="symbolDragStart(event)" ondragend="symbolDragEnd(event)" />
+          <img class="symbol" src="img/8.png" alt="8" ondragstart="symbolDragStart(event)" ondragend="symbolDragEnd(event)" />
+          <img class="symbol" src="img/9.png" alt="9" ondragstart="symbolDragStart(event)" ondragend="symbolDragEnd(event)" />
+          <img class="symbol" src="img/0.png" alt="0" ondragstart="symbolDragStart(event)" ondragend="symbolDragEnd(event)" />
         </div>
-        <div
-          class="numbers math_sign"
-          ondrop="numbersDrop(event,this)"
-          ondragover="numbersDragOver(event)"
-        >
-          <img
-            src="img/plus.png"
-            class="symbol"
-            alt="+"
-            id="plus"
-            ondragstart="symbolDragStart(event)"
-            ondragend="symbolDragEnd(event)"
-          />
+        <div class="numbers math_sign" ondrop="numbersDrop(event,this)" ondragover="numbersDragOver(event)">
+          <img src="img/plus.png" class="symbol" alt="+" id="plus" ondragstart="symbolDragStart(event)" ondragend="symbolDragEnd(event)" />
           <img
             src="img/minus.png"
             class="symbol"
@@ -113,30 +37,9 @@
             ondragstart="symbolDragStart(event)"
             ondragend="symbolDragEnd(event)"
           />
-          <img
-            src="img/division.png"
-            class="symbol"
-            alt="/"
-            id="division"
-            ondragstart="symbolDragStart(event)"
-            ondragend="symbolDragEnd(event)"
-          />
-          <img
-            src="img/multiplic.png"
-            class="symbol"
-            alt="*"
-            id="multiplic"
-            ondragstart="symbolDragStart(event)"
-            ondragend="symbolDragEnd(event)"
-          />
-          <img
-            src="img/equal.png"
-            class="symbol"
-            alt="="
-            id="equal"
-            ondragstart="symbolDragStart(event)"
-            ondragend="symbolDragEnd(event)"
-          />
+          <img src="img/division.png" class="symbol" alt="/" id="division" ondragstart="symbolDragStart(event)" ondragend="symbolDragEnd(event)" />
+          <img src="img/multiplic.png" class="symbol" alt="*" id="multiplic" ondragstart="symbolDragStart(event)" ondragend="symbolDragEnd(event)" />
+          <img src="img/equal.png" class="symbol" alt="=" id="equal" ondragstart="symbolDragStart(event)" ondragend="symbolDragEnd(event)" />
         </div>
 
         <img src="/img/board.png" alt="board" class="board" />
@@ -145,9 +48,7 @@
         <li class="menu_item"><a href="index.html">Играть</a></li>
         <li class="menu_item"><a href="index_rules.html">Правила</a></li>
         <li class="menu_item"><a href="index_study.html">Учеба</a></li>
-        <li class="menu_item">
-          <a href="index_best.html">Лучшие результаты</a>
-        </li>
+        <li class="menu_item"><a href="index_best.html">Лучшие результаты</a></li>
       </ul>
     </div>
     <audio id="sounds" preload="auto">
@@ -155,7 +56,6 @@
     </audio>
     <script>
       //TODO: рабораться почему звук начинает срабатывать только после клика на странице
-      //FIXME: почему появляется ошибка в консоли favicon.ico not found 404
       var soundLink = document.getElementById('sounds');
       var menu_items = document.querySelectorAll('.menu_item');
       menu_items.forEach((elem) =>

@@ -45,8 +45,10 @@ function mathExpressionDrop(EO, Div) {
 
 function checkAnswer() {
   if (result == readAnswer()) {
+    //TODO: сюда вставить модалку правильного ответа
     alert('Правильно!');
   } else {
+    //TODO: сюда вставить модалку ошибочного ответа
     alert('Ошибка!');
   }
 }

@@ -72,8 +72,6 @@ gameSection.appendChild(divCheckBtn);
 const divNumbers = document.createElement('div');
 divNumbers.setAttribute('class', 'numbers');
 divNumbers.setAttribute('id', 'numbers');
-divNumbers.setAttribute('ondrop', 'numbersDrop(event,this)');
-divNumbers.setAttribute('ondragover', 'numbersDragOver(event)');
 for (let i = 0; i < 10; i++) {
   let img = document.createElement('img');
   img.setAttribute('class', 'symbol');
@@ -88,8 +86,6 @@ gameSection.appendChild(divNumbers);
 const divMathSign = document.createElement('div');
 divMathSign.setAttribute('class', 'numbers math_sign');
 divMathSign.setAttribute('id', 'math_signs');
-divMathSign.setAttribute('ondrop', 'numbersDrop(event,this)');
-divMathSign.setAttribute('ondragover', 'numbersDragOver(event)');
 // +
 const plus = document.createElement('img');
 plus.setAttribute('class', 'symbol');
@@ -129,5 +125,7 @@ divMathSign.appendChild(equal);
 gameSection.appendChild(divMathSign);
 
 //с помощью JQuery повесим обработчиков Drag&Drop на класс symbol
+$('.numbers').attr('ondragstart', 'numbersDrop(event,this)');
+$('.numbers').attr('ondragend', 'numbersDragOver(event)');
 $('.symbol').attr('ondragstart', 'symbolDragStart(event)');
 $('.symbol').attr('ondragend', 'symbolDragEnd(event)');

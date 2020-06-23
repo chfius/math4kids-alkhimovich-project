@@ -12,9 +12,9 @@ var result = null;
 
 function clickPlay() {
   //валидация на существование имени
-  let nameExist = false;
+  let nameExist = true;
   do {
-    player.name = prompt('Ваше имя') || '';
+    player.name = prompt('Ваше имя') || 'Без имени';
     player.score = 0;
     if (player.name in players.names) {
       nameExist = confirm('Такое имя уже есть! Перезаписать?');

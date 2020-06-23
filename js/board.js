@@ -5,6 +5,7 @@ let board = {
     //----------- построение секции "Играть" -----------
     //здесь поле выражения-формулы
     const gameSection = document.getElementById('game');
+    gameSection.innerHTML = '';
     const divBoard = document.createElement('div');
     divBoard.setAttribute('class', 'board_field');
     const divMathExpr = document.createElement('div');

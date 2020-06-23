@@ -125,7 +125,7 @@ divMathSign.appendChild(equal);
 gameSection.appendChild(divMathSign);
 
 //с помощью JQuery повесим обработчиков Drag&Drop на класс symbol
-$('.numbers').attr('ondragstart', 'numbersDrop(event,this)');
-$('.numbers').attr('ondragend', 'numbersDragOver(event)');
+$('.numbers').attr('ondrop', 'numbersDrop(event,this)');
+$('.numbers').attr('ondragover', 'numbersDragOver(event)');
 $('.symbol').attr('ondragstart', 'symbolDragStart(event)');
 $('.symbol').attr('ondragend', 'symbolDragEnd(event)');

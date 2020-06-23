@@ -97,6 +97,13 @@ table.best_results {
   position: absolute;
   left: 15%;
   top: 60%;
+  transition: transform 0.1s;
+  cursor: url('http://csscursor.info/source/santahand.png'), default;
+}
+
+.numbers img:hover {
+  transform: translateY(-20px) scale(1) rotate(10deg);
+  z-index: 1;
 }
 
 .math_sign {
@@ -105,7 +112,6 @@ table.best_results {
 }
 
 .symbol {
-  cursor: grab;
   height: 80px;
 }
 

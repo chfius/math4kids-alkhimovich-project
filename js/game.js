@@ -1,10 +1,10 @@
 'use strict';
 
 var player = {
-/*name,
+  /*name,
   score,
   loaded */
-}
+};
 
 var draggedSymbol = null; // символ, который тянем
 var draggedSymbolParentDiv = null; // родитель, откуда тянется символ
@@ -37,9 +37,10 @@ function mathExpressionDrop(EO, Div) {
     Div.appendChild(draggedSymbol);
   }
   //если символ "равно" то считаем выражение
-
   if (/\=/.test(getExpr()) /*draggedSymbol.alt == '='*/) {
-    var expression = getExpr().join('').match(/([0-9)([+-\/\*]+)/)[0];
+    var expression = getExpr()
+      .join('')
+      .match(/([0-9)([+-\/\*]+)/)[0];
     result = eval(expression);
     //если не вычислиться, значит выражение не верно составлено и кнопка не появиться
     document.getElementById('check_answer').style.display = 'block'; //покажем кнопку "Проверить ответ"

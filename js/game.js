@@ -59,8 +59,8 @@ function mathExpressionDrop(EO, Div) {
       .join('')
       .match(/([0-9)([+-\/\*]+)/)[0];
     result = eval(expression);
-    //если не вычислиться, значит выражение не верно составлено и кнопка не появиться
-    document.getElementById('check_answer').style.display = 'block'; //покажем кнопку "Проверить ответ"
+    //покажем кнопку "Проверить ответ"
+    document.getElementById('check_answer').style.display = 'block';
   }
   if (draggedSymbolParentDiv.id !== 'math_signs') {
     //если тянули не знаки мат.операций, то вернем копию числа в исходный div
@@ -89,9 +89,7 @@ function getExpr() {
 }
 
 function readAnswer() {
-  var answ = getExpr();
-  var index = answ.indexOf('=') + 1; //+1 нужен чтобы в строке не было знака =
-  return parseInt(answ.slice(index).join('').toString());
+  return getExpr().join('').match(/(\=)(\d)/)[2];
 }
 
 function numbersDragOver(EO) {

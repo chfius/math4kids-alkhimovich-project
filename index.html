@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="css/style.css" />
     <script src="js/jquery-3.5.1.js"></script>
   </head>
-<!-- TODO: добавить эффект увеличения цифр и символов -->
+  <!-- TODO: добавить эффект увеличения цифр и символов -->
   <body>
     <div class="wrapper">
       <div class="board_wrapper">
@@ -51,33 +51,14 @@
             </p>
           </div>
         </section>
-        <section id="best">
-          <table class="best_results">
-            <tr>
-              <td>
-                Имя
-              </td>
-              <td>
-                Результат
-              </td>
-            </tr>
-            <tr>
-              <td>
-                Вася
-              </td>
-              <td>
-                5
-              </td>
-            </tr>
-          </table>
-        </section>
+        <section id="best"></section>
         <img src="/img/board.png" alt="board" class="board" />
       </div>
       <ul id="navbar" class="menu">
         <li class="menu_item"><a href="#game" onclick="clickPlay()">Играть</a></li>
         <li class="menu_item"><a href="#rules">Правила</a></li>
         <li class="menu_item"><a href="#study">Учеба</a></li>
-        <li class="menu_item"><a href="#best">Лучшие результаты</a></li>
+        <li class="menu_item"><a href="#best" onclick="board.showBestPlayers()">Лучшие результаты</a></li>
       </ul>
     </div>
     <audio id="sounds" preload="auto">
@@ -85,17 +66,21 @@
     </audio>
     <script>
       $(document).ready(() => {
-        var soundLink = document.getElementById('sounds');
-        var menu_items = document.querySelectorAll('.menu_item');
+        //после загрузки:
+        //добавим звуки к пунктам меню
+        let soundLink = document.getElementById('sounds');
+        let menu_items = document.querySelectorAll('.menu_item');
         menu_items.forEach((elem) =>
           elem.addEventListener('mouseenter', () => {
             soundLink.play();
           }),
         );
+        //загрузим Ajax'ом пользвателей
+        players.load();
       });
     </script>
-    <script src="js/board.js" async></script>
-    <script src="js/player.js" async></script>
+    <script src="js/player.js"></script>
+    <script src="js/board.js" defer></script>
     <script src="js/game.js" async></script>
   </body>
 </html>

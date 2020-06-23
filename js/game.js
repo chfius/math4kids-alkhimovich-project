@@ -18,8 +18,7 @@ function clickPlay() {
   //TODO: сделать валидацию на существование имени
 
   //создаем нового игрока с начальным кол-вом очков
-  players.addName(player.name);
-  players.names[player.name] = player.score;
+  players.addName(player.name,player.score);
   //нарисуем цифры, знаки и место для выражения
   board.newGame();
 }

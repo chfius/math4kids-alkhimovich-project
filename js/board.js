@@ -1,48 +1,5 @@
 'use strict';
 
-window.onhashchange = switchToStateFromUrlHash;
-
-function switchToStateFromUrlHash() {
-  var page = window.location.hash.substr(1);
-  if (page === '') {
-    page = 'game';
-  }
-
-  switch (page) {
-    case 'game':
-      document.getElementById('game').style.display = 'block';
-      document.getElementById('rules').style.display = 'none';
-      document.getElementById('study').style.display = 'none';
-      document.getElementById('best').style.display = 'none';
-      break;
-    case 'rules':
-      document.getElementById('game').style.display = 'none';
-      document.getElementById('rules').style.display = 'block';
-      document.getElementById('study').style.display = 'none';
-      document.getElementById('best').style.display = 'none';
-      break;
-    case 'study':
-      document.getElementById('game').style.display = 'none';
-      document.getElementById('rules').style.display = 'none';
-      document.getElementById('study').style.display = 'block';
-      document.getElementById('best').style.display = 'none';
-      break;
-    case 'best':
-      document.getElementById('game').style.display = 'none';
-      document.getElementById('rules').style.display = 'none';
-      document.getElementById('study').style.display = 'none';
-      document.getElementById('best').style.display = 'block';
-      break;
-    default:
-      document.getElementById('game').style.display = 'block';
-      document.getElementById('rules').style.display = 'none';
-      document.getElementById('study').style.display = 'none';
-      document.getElementById('best').style.display = 'none';
-      break;
-  }
-}
-switchToStateFromUrlHash();
-
 let board = {
   newGame() {
     //----------- построение секции "Играть" -----------
@@ -128,4 +85,78 @@ let board = {
     $('.symbol').attr('ondragstart', 'symbolDragStart(event)');
     $('.symbol').attr('ondragend', 'symbolDragEnd(event)');
   },
+  showBestPlayers() {
+    let sectionBestPlayers = document.getElementById('best');
+    sectionBestPlayers.innerHTML = '';
+
+    let tablePlayers = document.createElement('table');
+    tablePlayers.setAttribute('class', 'best_results');
+
+    let tableHeader = document.createElement('tr');
+    //создадим шапку таблицы
+    let tableColName = document.createElement('td');
+    tableColName.innerHTML = 'Имя';
+    tableHeader.appendChild(tableColName);
+    let tableColResult = document.createElement('td');
+    tableColResult.innerHTML = 'Результат';
+    tableHeader.appendChild(tableColResult);
+    tablePlayers.appendChild(tableHeader);
+
+    //наполним таблицу
+    for (let name in players.names) {
+      let tableCol = document.createElement('tr');
+      let tableColName = document.createElement('td');
+      tableColName.innerHTML = name;
+      tableCol.appendChild(tableColName);
+      let tableColResult = document.createElement('td');
+      tableColResult.innerHTML = players.names[name];
+      tableCol.appendChild(tableColResult);
+      tablePlayers.appendChild(tableCol);
+    }
+
+    sectionBestPlayers.appendChild(tablePlayers);
+  },
 };
+
+window.onhashchange = switchToStateFromUrlHash;
+
+function switchToStateFromUrlHash() {
+  let page = window.location.hash.substr(1);
+  if (page === '') {
+    page = 'game';
+  }
+
+  switch (page) {
+    case 'game':
+      document.getElementById('game').style.display = 'block';
+      document.getElementById('rules').style.display = 'none';
+      document.getElementById('study').style.display = 'none';
+      document.getElementById('best').style.display = 'none';
+      break;
+    case 'rules':
+      document.getElementById('game').style.display = 'none';
+      document.getElementById('rules').style.display = 'block';
+      document.getElementById('study').style.display = 'none';
+      document.getElementById('best').style.display = 'none';
+      break;
+    case 'study':
+      document.getElementById('game').style.display = 'none';
+      document.getElementById('rules').style.display = 'none';
+      document.getElementById('study').style.display = 'block';
+      document.getElementById('best').style.display = 'none';
+      break;
+    case 'best':
+      document.getElementById('game').style.display = 'none';
+      document.getElementById('rules').style.display = 'none';
+      document.getElementById('study').style.display = 'none';
+      document.getElementById('best').style.display = 'block';
+      break;
+    default:
+      document.getElementById('game').style.display = 'block';
+      document.getElementById('rules').style.display = 'none';
+      document.getElementById('study').style.display = 'none';
+      document.getElementById('best').style.display = 'none';
+      break;
+  }
+}
+switchToStateFromUrlHash();

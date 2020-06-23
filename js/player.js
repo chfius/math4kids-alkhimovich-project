@@ -58,6 +58,7 @@ let players = {
     return Object.keys(this);
   },
   updateNames() {
+    let that = this;
     let password = 'qaz123';
     $.ajax({
       url: AjaxHandlerScript,
@@ -76,13 +77,13 @@ let players = {
             f: 'UPDATE',
             n: hashAjaxName,
             p: password,
-            v: JSON.stringify(this.names),
+            v: JSON.stringify(that.names),
           },
           cache: false,
-          error: this.errorHandler,
+          error: that.errorHandler,
         });
       },
-      error: this.errorHandler,
+      error: that.errorHandler,
     });
   },
   errorHandler() {

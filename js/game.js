@@ -1,8 +1,8 @@
 'use strict';
 
 let player = {
-  name:'John Doe',
-  score:0,
+  name: 'John Doe',
+  score: 0,
 };
 
 var draggedSymbol = null; // символ, который тянем
@@ -11,14 +11,19 @@ var draggedSymbolParentDiv = null; // родитель, откуда тянет�
 var result = null;
 
 function clickPlay() {
-  //document.getElementById('math_expression').innerHTML = '';
-  //location.reload();
-  player.name = prompt('Ваше имя') || '';
-  player.score = 0;
-  //TODO: сделать валидацию на существование имени
+  //валидация на существование имени
+  let nameExist = false;
+  do {
+    player.name = prompt('Ваше имя') || '';
+    player.score = 0;
+    if (player.name in players.names) {
+      nameExist = confirm('Такое имя уже есть! Перезаписать?');
+    }
+  } while (!nameExist);
 
   //создаем нового игрока с начальным кол-вом очков
-  players.addName(player.name,player.score);
+  players.addName(player.name, player.score);
+
   //нарисуем цифры, знаки и место для выражения
   board.newGame();
 }

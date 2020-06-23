@@ -44,7 +44,8 @@ function switchToStateFromUrlHash() {
 switchToStateFromUrlHash();
 
 function clickPlay() {
-  document.getElementById('math_expression').innerHTML = '';
+  //document.getElementById('math_expression').innerHTML = '';
+  location.reload();
 }
 
 //----------- построение секции "Играть" -----------

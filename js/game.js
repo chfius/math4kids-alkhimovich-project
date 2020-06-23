@@ -30,9 +30,11 @@ function mathExpressionDrop(EO, Div) {
   if (draggedSymbol) {
     Div.appendChild(draggedSymbol);
   }
-  //если последний символ "равно" то считаем выражение
-  if (draggedSymbol.alt == '=') {
-    result = evalExpr();
+  //если символ "равно" то считаем выражение
+
+  if (/\=/.test(getExpr()) /*draggedSymbol.alt == '='*/) {
+    var expression = getExpr().join('').match(/([0-9)([+-\/\*]+)/)[0];
+    result = eval(expression);
     //если не вычислиться, значит выражение не верно составлено и кнопка не появиться
     document.getElementById('check_answer').style.display = 'block'; //покажем кнопку "Проверить ответ"
   }
@@ -60,12 +62,6 @@ function getExpr() {
     str.push(el.alt);
   });
   return str;
-}
-
-function evalExpr() {
-  var expr = getExpr();
-  expr.pop(); //уберем в строке знак "равно"
-  return eval(expr.join(''));
 }
 
 function readAnswer() {

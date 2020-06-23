@@ -72,10 +72,12 @@ function mathExpressionDrop(EO, Div) {
 function checkAnswer() {
   if (result == readAnswer()) {
     //TODO: сюда вставить модалку правильного ответа
-    alert('Правильно!');
+    player.score++;
+    $('#right_modal').dialog('open');
+    board.newGame();
   } else {
     //TODO: сюда вставить модалку ошибочного ответа
-    alert('Ошибка!');
+    $('#wrong_modal').dialog('open');
   }
 }
 

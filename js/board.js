@@ -85,6 +85,64 @@ let board = {
     $('.numbers').attr('ondragover', 'numbersDragOver(event)');
     $('.symbol').attr('ondragstart', 'symbolDragStart(event)');
     $('.symbol').attr('ondragend', 'symbolDragEnd(event)');
+
+    //добавим модалки
+    const rightModal = document.createElement('div');
+    rightModal.id = 'right_modal';
+    rightModal.title = 'Правильно!';
+    rightModal.innerHTML = 'Продолжить решать примеры?';
+    gameSection.appendChild(rightModal);
+
+    $('#right_modal').dialog({
+      autoOpen: false, // окно создаётся скрытым
+      modal: true, // модальное окно
+      draggable: false, // не перетаскивать
+      resizable: false, // не менять размер
+      buttons: [
+        { text: 'Да', click: continueBtn },
+        { text: 'Нет', click: finishBtn },
+      ],
+    });
+
+    function continueBtn() {
+      $(this).dialog('close');
+    }
+
+    function finishBtn() {
+      players.names[player.name] = player.score;
+      player = {};
+      $(this).dialog('close');
+    }
+
+    const wrongModal = document.createElement('div');
+    wrongModal.id = 'wrong_modal';
+    wrongModal.title = 'Ошибка!';
+    wrongModal.innerHTML = 'Неверный ответ!';
+    gameSection.appendChild(wrongModal);
+
+    $('#wrong_modal').dialog({
+      autoOpen: false, // окно создаётся скрытым
+      modal: true, // модальное окно
+      draggable: false, // не перетаскивать
+      resizable: false, // не менять размер
+      buttons: [
+        {
+          text: 'OK',
+          click: function () {
+            $(this).dialog('close');
+          },
+        },
+      ],
+    });
+
+    /*function continueBtn() {
+      console.log('кнопка 1 нажата');
+    }
+
+    function finishBtn() {
+      console.log('кнопка 2 нажата');
+      $(this).dialog('close');
+    }*/
   },
   showBestPlayers() {
     let sectionBestPlayers = document.getElementById('best');

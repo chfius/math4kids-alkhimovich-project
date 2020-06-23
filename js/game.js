@@ -1,5 +1,11 @@
 'use strict';
 
+var player = {
+/*name,
+  score,
+  loaded */
+}
+
 var draggedSymbol = null; // символ, который тянем
 var draggedSymbolParentDiv = null; // родитель, откуда тянется символ
 

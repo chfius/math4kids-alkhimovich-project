@@ -1,15 +1,28 @@
 'use strict';
 
-var player = {
-  /*name,
-  score,
-  loaded */
+let player = {
+  name:'John Doe',
+  score:0,
 };
 
 var draggedSymbol = null; // символ, который тянем
 var draggedSymbolParentDiv = null; // родитель, откуда тянется символ
 
 var result = null;
+
+function clickPlay() {
+  //document.getElementById('math_expression').innerHTML = '';
+  //location.reload();
+  player.name = prompt('Ваше имя') || '';
+  player.score = 0;
+  //TODO: сделать валидацию на существование имени
+
+  //создаем нового игрока с начальным кол-вом очков
+  players.addName(player.name);
+  players.names[player.name] = player.score;
+  //нарисуем цифры, знаки и место для выражения
+  board.newGame();
+}
 
 function symbolDragStart(EO) {
   EO = EO || window.event;

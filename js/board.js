@@ -134,15 +134,6 @@ let board = {
         },
       ],
     });
-
-    /*function continueBtn() {
-      console.log('кнопка 1 нажата');
-    }
-
-    function finishBtn() {
-      console.log('кнопка 2 нажата');
-      $(this).dialog('close');
-    }*/
   },
   showBestPlayers() {
     let sectionBestPlayers = document.getElementById('best');

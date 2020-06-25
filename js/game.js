@@ -53,7 +53,6 @@ function mathExpressionDrop(EO, Div) {
 function checkAnswer() {
   if (result == readAnswer()) {
     player.score++;
-    console.log('right');
     $('#right_modal').dialog('open');
     board.newGame();
   } else {

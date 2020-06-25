@@ -185,7 +185,11 @@ let board = {
       ],
     });
   },
+  endGame() {
+    document.getElementById('game').innerHTML = '';
+  },
   showBestPlayers() {
+    this.endGame();
     let sectionBestPlayers = document.getElementById('best');
     sectionBestPlayers.innerHTML = '';
 

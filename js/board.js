@@ -12,7 +12,7 @@ $(document).ready(() => {
   );
   //загрузим Ajax'ом пользвателей
   players.load();
-  //добавим нужные модалки добавления пользователя
+  //добавим модалку добавления пользователя
   const gameSection = document.getElementById('game');
   const userNameDiv = document.createElement('div');
   userNameDiv.id = 'user_name';
@@ -34,8 +34,25 @@ $(document).ready(() => {
   });
 });
 
+//а здесь покажем другой вариант модалки
+//если раскомментировать строку, то сработает вариант который выше
 $('#playBtn').click(() => {
-  $('#user_name').dialog('open');
+  //$('#user_name').dialog('open');
+  $.MessageBox({
+    input: true,
+    message: 'Ваше имя?',
+  }).done((data) => {
+    if ($.trim(data)) {
+      $.MessageBox('Привет, <b>' + data + '</b>!');
+      player.name = data;
+    } else {
+      $.MessageBox("Пусть будет 'Без имени'...");
+      player.name = 'Без имени';
+    }
+    player.score = 0;
+    players.addName(player.name, player.score);
+    board.newGame();
+  });
 });
 
 function clickOkBtn() {
@@ -155,6 +172,7 @@ let board = {
     });
 
     function continueBtn() {
+      board.newGame();
       $(this).dialog('close');
     }
 
@@ -185,11 +203,7 @@ let board = {
       ],
     });
   },
-  endGame() {
-    document.getElementById('game').innerHTML = '';
-  },
   showBestPlayers() {
-    this.endGame();
     let sectionBestPlayers = document.getElementById('best');
     sectionBestPlayers.innerHTML = '';
 

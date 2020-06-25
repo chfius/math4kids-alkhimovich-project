@@ -54,7 +54,6 @@ function checkAnswer() {
   if (result == readAnswer()) {
     player.score++;
     $('#right_modal').dialog('open');
-    board.newGame();
   } else {
     $('#wrong_modal').dialog('open');
   }

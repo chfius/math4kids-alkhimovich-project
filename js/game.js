@@ -1,7 +1,7 @@
 'use strict';
 
 let player = {
-  name: 'John Doe',
+  name: '',
   score: 0,
 };
 
@@ -41,13 +41,12 @@ function symbolDragEnd(EO) {
 
 function mathExpressionDragOver(EO) {
   EO = EO || window.event;
-  // по-умолчанию ронять элементы в div запрещено, отменяем
   EO.preventDefault();
 }
 
 function mathExpressionDrop(EO, Div) {
   // добавлен символ в формуле
-  var cloneSymbol = draggedSymbol.cloneNode(true);
+  var cloneSymbol = draggedSymbol.cloneNode(true); //сохраним его копию в общем списке цифр
   EO = EO || window.event;
   EO.preventDefault();
   if (draggedSymbol) {
@@ -89,7 +88,9 @@ function getExpr() {
 }
 
 function readAnswer() {
-  return getExpr().join('').match(/(\=)(\d)/)[2];
+  return getExpr()
+    .join('')
+    .match(/(\=)(\d)/)[2];
 }
 
 function numbersDragOver(EO) {

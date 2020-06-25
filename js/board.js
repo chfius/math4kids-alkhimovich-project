@@ -168,6 +168,7 @@ let board = {
   },
 };
 
+// ---------- SPA ---------------
 window.onhashchange = switchToStateFromUrlHash;
 
 function switchToStateFromUrlHash() {
@@ -178,34 +179,34 @@ function switchToStateFromUrlHash() {
 
   switch (page) {
     case 'game':
-      document.getElementById('game').style.display = 'block';
-      document.getElementById('rules').style.display = 'none';
-      document.getElementById('study').style.display = 'none';
-      document.getElementById('best').style.display = 'none';
+      $("#game").show("slow");
+      $("#rules").hide("slow");
+      $("#study").hide("slow");
+      $("#best").hide("slow");
       break;
     case 'rules':
-      document.getElementById('game').style.display = 'none';
-      document.getElementById('rules').style.display = 'block';
-      document.getElementById('study').style.display = 'none';
-      document.getElementById('best').style.display = 'none';
+      $("#game").hide("slow");
+      $("#rules").show("slow");
+      $("#study").hide("slow");
+      $("#best").hide("slow");
       break;
     case 'study':
-      document.getElementById('game').style.display = 'none';
-      document.getElementById('rules').style.display = 'none';
-      document.getElementById('study').style.display = 'block';
-      document.getElementById('best').style.display = 'none';
+      $("#game").hide("slow");
+      $("#rules").hide("slow");
+      $("#study").show("slow");
+      $("#best").hide("slow");
       break;
     case 'best':
-      document.getElementById('game').style.display = 'none';
-      document.getElementById('rules').style.display = 'none';
-      document.getElementById('study').style.display = 'none';
-      document.getElementById('best').style.display = 'block';
+      $("#game").hide("slow");
+      $("#rules").hide("slow");
+      $("#study").hide("slow");
+      $("#best").show("slow");
       break;
     default:
-      document.getElementById('game').style.display = 'block';
-      document.getElementById('rules').style.display = 'none';
-      document.getElementById('study').style.display = 'none';
-      document.getElementById('best').style.display = 'none';
+      $("#game").show("slow");
+      $("#rules").hide("slow");
+      $("#study").hide("slow");
+      $("#best").hide("slow");
       break;
   }
 }

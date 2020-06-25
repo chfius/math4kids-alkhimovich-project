@@ -1,5 +1,55 @@
 'use strict';
 
+$(document).ready(() => {
+  //после загрузки:
+  //добавим звуки к пунктам меню
+  let soundLink = document.getElementById('sounds');
+  let menu_items = document.querySelectorAll('.menu_item');
+  menu_items.forEach((elem) =>
+    elem.addEventListener('mouseenter', () => {
+      soundLink.play();
+    }),
+  );
+  //загрузим Ajax'ом пользвателей
+  players.load();
+  //добавим нужные модалки добавления пользователя
+  const gameSection = document.getElementById('game');
+  const userNameDiv = document.createElement('div');
+  userNameDiv.id = 'user_name';
+  userNameDiv.title = 'Имя игрока';
+  userNameDiv.innerHTML = 'Введите ваше имя';
+  const inputUserName = document.createElement('input');
+  inputUserName.id = 'input_user_name';
+  userNameDiv.appendChild(inputUserName);
+  gameSection.appendChild(userNameDiv);
+  $('#user_name').dialog({
+    autoOpen: false, // окно создаётся скрытым
+    modal: true, // модальное окно
+    draggable: false, // не перетаскивать
+    resizable: false, // не менять размер
+    buttons: [{ text: 'OK', click: clickOkBtn }],
+    beforeClose: (event, ui) => {
+      return checkChanges();
+    },
+  });
+});
+
+$('#playBtn').click(() => {
+  $('#user_name').dialog('open');
+});
+
+function clickOkBtn() {
+  $(this).dialog('close');
+  player.name = $('#input_user_name').val();
+  player.score = 0;
+  players.addName(player.name, player.score);
+  board.newGame();
+}
+
+function checkChanges(e, ui) {
+  return $('#input_user_name').val() ? true : false;
+}
+
 let board = {
   newGame() {
     //----------- построение секции "Играть" -----------
@@ -179,34 +229,34 @@ function switchToStateFromUrlHash() {
 
   switch (page) {
     case 'game':
-      $("#game").show("slow");
-      $("#rules").hide("slow");
-      $("#study").hide("slow");
-      $("#best").hide("slow");
+      $('#game').show('slow');
+      $('#rules').hide('slow');
+      $('#study').hide('slow');
+      $('#best').hide('slow');
       break;
     case 'rules':
-      $("#game").hide("slow");
-      $("#rules").show("slow");
-      $("#study").hide("slow");
-      $("#best").hide("slow");
+      $('#game').hide('slow');
+      $('#rules').show('slow');
+      $('#study').hide('slow');
+      $('#best').hide('slow');
       break;
     case 'study':
-      $("#game").hide("slow");
-      $("#rules").hide("slow");
-      $("#study").show("slow");
-      $("#best").hide("slow");
+      $('#game').hide('slow');
+      $('#rules').hide('slow');
+      $('#study').show('slow');
+      $('#best').hide('slow');
       break;
     case 'best':
-      $("#game").hide("slow");
-      $("#rules").hide("slow");
-      $("#study").hide("slow");
-      $("#best").show("slow");
+      $('#game').hide('slow');
+      $('#rules').hide('slow');
+      $('#study').hide('slow');
+      $('#best').show('slow');
       break;
     default:
-      $("#game").show("slow");
-      $("#rules").hide("slow");
-      $("#study").hide("slow");
-      $("#best").hide("slow");
+      $('#game').show('slow');
+      $('#rules').hide('slow');
+      $('#study').hide('slow');
+      $('#best').hide('slow');
       break;
   }
 }

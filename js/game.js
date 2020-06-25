@@ -1,7 +1,7 @@
 'use strict';
 
 let player = {
-  name: '',
+  name: 'Без имени',
   score: 0,
 };
 
@@ -9,24 +9,6 @@ var draggedSymbol = null; // символ, который тянем
 var draggedSymbolParentDiv = null; // родитель, откуда тянется символ
 
 var result = null;
-
-function clickPlay() {
-  //валидация на существование имени
-  let nameExist = true;
-  do {
-    player.name = prompt('Ваше имя') || 'Без имени';
-    player.score = 0;
-    if (player.name in players.names) {
-      nameExist = confirm('Такое имя уже есть! Перезаписать?');
-    }
-  } while (!nameExist);
-
-  //создаем нового игрока с начальным кол-вом очков
-  players.addName(player.name, player.score);
-
-  //нарисуем цифры, знаки и место для выражения
-  board.newGame();
-}
 
 function symbolDragStart(EO) {
   EO = EO || window.event;
@@ -71,6 +53,7 @@ function mathExpressionDrop(EO, Div) {
 function checkAnswer() {
   if (result == readAnswer()) {
     player.score++;
+    console.log('right');
     $('#right_modal').dialog('open');
     board.newGame();
   } else {

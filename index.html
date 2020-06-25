@@ -58,7 +58,7 @@
         <img src="/img/board.png" alt="board" class="board" />
       </div>
       <ul id="navbar" class="menu">
-        <li class="menu_item"><a href="#game" onclick="clickPlay()">Играть</a></li>
+        <li class="menu_item"><a href="#game" id="playBtn">Играть</a></li>
         <li class="menu_item"><a href="#rules">Правила</a></li>
         <li class="menu_item"><a href="#study">Учеба</a></li>
         <li class="menu_item"><a href="#best" onclick="board.showBestPlayers()">Лучшие результаты</a></li>
@@ -68,7 +68,7 @@
       <source src="snd/menu-item.mp3" />
     </audio>
     <script>
-      $(document).ready(() => {
+     /* $(document).ready(() => {
         //после загрузки:
         //добавим звуки к пунктам меню
         let soundLink = document.getElementById('sounds');
@@ -80,7 +80,7 @@
         );
         //загрузим Ajax'ом пользвателей
         players.load();
-      });
+      });*/
     </script>
     <script src="js/player.js"></script>
     <script src="js/board.js" defer></script>

@@ -8,7 +8,7 @@
     <!-- jQuery UI -->
     <script src="js/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="css/jquery-ui.min.css" />
-
+    <!-- MessageBox UI -->
     <script src="js/messagebox.js"></script>
     <link rel="stylesheet" href="css/messagebox.css" />
   </head>
@@ -18,34 +18,7 @@
       <div class="board_wrapper">
         <section id="game"></section>
         <section id="rules"></section>
-        <section id="study">
-          <div class="board_field">
-            <h1>Сложение и вычитание натуральных чисел, свойства сложения</h1>
-            <p class="study_text">
-              Прибавить к натуральному числу <span class="example_number">1</span> - означает получить натуральное число, следующее за данным:
-              <span class="example_number">5 + 1 = 6, 17 + 1 = 18</span> и т.д.
-            </p>
-            <p class="study_text">
-              Сложить числа <span class="example_number">7</span> и <span class="example_number">3</span> - значит прибавить к <span class="example_number">7</span> три раза
-              единицу: <br /><span class="example_number">7 + 3 = 7 + 1 + 1 + 1 = 8 + 1 + 1 = 9 + 1 = 10</span>
-            </p>
-            <h3>Свойства сложения</h3>
-            <ol class="study_text">
-              <li>От перемены мест слагаемых сумма не меняется. Примеры: <span class="example_number">7 + 3 = 3 + 7 = 10</span></li>
-              <li>От прибавления нуля сумма не меняется: <span class="example_number">7 + 0 = 7</span></li>
-              <li>
-                Чтобы прибавить к числу сумму двух чисел, нужно вначале прибавить к этому числу первое, а затем к полученной сумме - второе слагаемое: <br /><span
-                  class="example_number"
-                  >3 + (2 + 4) = ( 3 + 2) + 4 = 5 + 4 = 9</span
-                >
-              </li>
-            </ol>
-            <p class="study_text">
-              Вычитание - это действие, при котором по сумме и одному из слагаемых находят другое слагаемое. Пример: <span class="example_number">3 + 8 = 11</span> значит
-              <span class="example_number">3 = 11 - 8; 8 = 11 - 3</span>
-            </p>
-          </div>
-        </section>
+        <section id="study"></section>
         <section id="best"></section>
         <img src="/img/board.png" alt="board" class="board" />
       </div>
@@ -59,21 +32,6 @@
     <audio id="sounds" preload="auto">
       <source src="snd/menu-item.mp3" />
     </audio>
-    <script>
-      /* $(document).ready(() => {
-        //после загрузки:
-        //добавим звуки к пунктам меню
-        let soundLink = document.getElementById('sounds');
-        let menu_items = document.querySelectorAll('.menu_item');
-        menu_items.forEach((elem) =>
-          elem.addEventListener('mouseenter', () => {
-            soundLink.play();
-          }),
-        );
-        //загрузим Ajax'ом пользвателей
-        players.load();
-      });*/
-    </script>
     <script src="js/player.js"></script>
     <script src="js/board.js" defer></script>
     <script src="js/game.js" async></script>

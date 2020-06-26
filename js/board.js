@@ -32,8 +32,7 @@ $(document).ready(() => {
       return checkChanges();
     },
   });
-  //напишем правила
-  board.drawRules();
+  board.initBoard(); //наполним страницы Правила и Учеба
 });
 
 //а здесь покажем другой вариант модалки
@@ -236,6 +235,9 @@ let board = {
 
     sectionBestPlayers.appendChild(tablePlayers);
   },
+  initBoard() {
+    this.drawRules(), this.drawStudy();
+  },
   drawRules() {
     const rulesSection = document.getElementById('rules');
     const boardDiv = document.createElement('div');
@@ -251,9 +253,25 @@ let board = {
       error: (jqXHR, StatusStr, ErrorStr) => {
         console.log(StatusStr + ' ' + ErrorStr);
       },
-    });    
+    });
     boardDiv.appendChild(rulesText);
     rulesSection.appendChild(boardDiv);
+  },
+  drawStudy() {
+    const studySection = document.getElementById('study');
+    const boardDiv = document.createElement('div');
+    boardDiv.classList = 'board_field';
+    $.ajax('txt/study.html', {
+      type: 'GET',
+      dataType: 'html',
+      success: (data) => {
+        boardDiv.innerHTML = data;
+      },
+      error: (jqXHR, StatusStr, ErrorStr) => {
+        console.log(StatusStr + ' ' + ErrorStr);
+      },
+    });
+    studySection.appendChild(boardDiv);
   },
 };
 

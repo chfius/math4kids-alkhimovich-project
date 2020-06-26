@@ -12,30 +12,13 @@ $(document).ready(() => {
   );
   //загрузим Ajax'ом пользвателей
   players.load();
-  //добавим модалку добавления пользователя
-  const gameSection = document.getElementById('game');
-  const userNameDiv = document.createElement('div');
-  userNameDiv.id = 'user_name';
-  userNameDiv.title = 'Имя игрока';
-  userNameDiv.innerHTML = 'Введите ваше имя';
-  const inputUserName = document.createElement('input');
-  inputUserName.id = 'input_user_name';
-  userNameDiv.appendChild(inputUserName);
-  gameSection.appendChild(userNameDiv);
-  $('#user_name').dialog({
-    autoOpen: false, // окно создаётся скрытым
-    modal: true, // модальное окно
-    draggable: false, // не перетаскивать
-    resizable: false, // не менять размер
-    buttons: [{ text: 'OK', click: clickOkBtn }],
-    beforeClose: (event, ui) => {
-      return checkChanges();
-    },
-  });
+
   board.initBoard(); //наполним страницы Правила и Учеба
 });
 
 $('#bestBtn').click(() => {
+  //players.names = {}; <----очистка хранилища
+  //players.updateNames();
   board.showBestPlayers();
 });
 
@@ -242,6 +225,27 @@ let board = {
     sectionBestPlayers.appendChild(tablePlayers);
   },
   initBoard() {
+    //добавим модалку добавления пользователя
+    const gameSection = document.getElementById('game');
+    const userNameDiv = document.createElement('div');
+    userNameDiv.id = 'user_name';
+    userNameDiv.title = 'Имя игрока';
+    userNameDiv.innerHTML = 'Введите ваше имя';
+    const inputUserName = document.createElement('input');
+    inputUserName.id = 'input_user_name';
+    userNameDiv.appendChild(inputUserName);
+    gameSection.appendChild(userNameDiv);
+    $('#user_name').dialog({
+      autoOpen: false, // окно создаётся скрытым
+      modal: true, // модальное окно
+      draggable: false, // не перетаскивать
+      resizable: false, // не менять размер
+      buttons: [{ text: 'OK', click: clickOkBtn }],
+      beforeClose: (event, ui) => {
+        return checkChanges();
+      },
+    });
+    //отрисуем доску с правилами и учебой
     this.drawRules(), this.drawStudy();
   },
   drawRules() {

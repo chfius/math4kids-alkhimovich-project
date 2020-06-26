@@ -21,6 +21,24 @@ function symbolDragEnd(EO) {
   draggedSymbol = null;
 }
 
+function symbolDblClick(EO) {
+  const expressionDiv = document.getElementById('math_expression');
+  expressionDiv.appendChild(EO.target.cloneNode(true));
+  checkExpression();
+}
+
+function checkExpression() {
+  //если есть символ "равно" то считаем выражение
+  if (/\=/.test(getExpr())) {
+    let expression = getExpr()
+      .join('')
+      .match(/[0-9+-\/\*]+/)[0];
+    result = eval(expression);
+    //покажем кнопку "Проверить ответ"
+    document.getElementById('check_answer').style.display = 'block';
+  }
+}
+
 function mathExpressionDragOver(EO) {
   EO = EO || window.event;
   EO.preventDefault();
@@ -34,15 +52,7 @@ function mathExpressionDrop(EO, Div) {
   if (draggedSymbol) {
     Div.appendChild(draggedSymbol);
   }
-  //если символ "равно" то считаем выражение
-  if (/\=/.test(getExpr()) /*draggedSymbol.alt == '='*/) {
-    var expression = getExpr()
-      .join('')
-      .match(/([0-9)([+-\/\*]+)/)[0];
-    result = eval(expression);
-    //покажем кнопку "Проверить ответ"
-    document.getElementById('check_answer').style.display = 'block';
-  }
+  checkExpression();
   if (draggedSymbolParentDiv.id !== 'math_signs') {
     //если тянули не знаки мат.операций, то вернем копию числа в исходный div
     draggedSymbolParentDiv.appendChild(cloneSymbol);
@@ -54,7 +64,7 @@ function checkAnswer() {
   if (result == readAnswer()) {
     player.score++;
     $('#right_modal').dialog('open');
-  } else {    
+  } else {
     $('#wrong_modal').dialog('open');
   }
 }

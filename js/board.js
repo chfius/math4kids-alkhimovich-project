@@ -157,6 +157,8 @@ let board = {
     $('.numbers').attr('ondragover', 'numbersDragOver(event)');
     $('.symbol').attr('ondragstart', 'symbolDragStart(event)');
     $('.symbol').attr('ondragend', 'symbolDragEnd(event)');
+    //и на двойной клик
+    $('.symbol').attr('ondblclick', 'symbolDblClick(event)');
 
     //добавим модалки
     const rightModal = document.createElement('div');

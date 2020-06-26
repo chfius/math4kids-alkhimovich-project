@@ -54,7 +54,7 @@ function checkAnswer() {
   if (result == readAnswer()) {
     player.score++;
     $('#right_modal').dialog('open');
-  } else {
+  } else {    
     $('#wrong_modal').dialog('open');
   }
 }
@@ -71,7 +71,7 @@ function getExpr() {
 function readAnswer() {
   return getExpr()
     .join('')
-    .match(/(\=)(\d)/)[2];
+    .match(/(\=)(\d+)/)[2];
 }
 
 function numbersDragOver(EO) {

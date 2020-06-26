@@ -32,6 +32,8 @@ $(document).ready(() => {
       return checkChanges();
     },
   });
+  //напишем правила
+  board.drawRules();
 });
 
 //а здесь покажем другой вариант модалки
@@ -233,6 +235,25 @@ let board = {
     }
 
     sectionBestPlayers.appendChild(tablePlayers);
+  },
+  drawRules() {
+    const rulesSection = document.getElementById('rules');
+    const boardDiv = document.createElement('div');
+    boardDiv.classList = 'board_field';
+    const rulesText = document.createElement('p');
+    rulesText.classList = 'rules_text';
+    $.ajax('txt/rules.txt', {
+      type: 'GET',
+      dataType: 'text',
+      success: (data) => {
+        rulesText.innerHTML = data;
+      },
+      error: (jqXHR, StatusStr, ErrorStr) => {
+        console.log(StatusStr + ' ' + ErrorStr);
+      },
+    });    
+    boardDiv.appendChild(rulesText);
+    rulesSection.appendChild(boardDiv);
   },
 };
 

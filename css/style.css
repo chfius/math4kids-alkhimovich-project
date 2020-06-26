@@ -2,6 +2,12 @@ body {
   background-image: url('../img/background.jpg');
 }
 
+#rules,
+#study,
+#best {
+  display: none;
+}
+
 div.wrapper {
   margin: 10px 0;
   display: flex;

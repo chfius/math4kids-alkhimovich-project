@@ -79,9 +79,16 @@ function getExpr() {
 }
 
 function readAnswer() {
-  return getExpr()
-    .join('')
-    .match(/(\=)(\d+)/)[2];
+  let answer =
+    getExpr()
+      .join('')
+      .match(/(\=)(\d+)/) || '';
+
+  if (answer[2]) {
+    return answer[2];
+  } else {
+    return null;
+  }
 }
 
 function numbersDragOver(EO) {

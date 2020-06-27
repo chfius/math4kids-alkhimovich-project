@@ -18,6 +18,35 @@ let game = {
     expressionDiv.appendChild(EO.target.cloneNode(true));
     this.checkExpression();
   },
+  touchClick(EO) {
+    let checkBtn = document.getElementById('check_answer');
+    let fieldMathSigns = document.getElementById('math_signs');
+    this.draggedSymbol = EO.target;
+    console.log(this.draggedSymbol.classList);
+    this.draggedSymbolParentDiv = EO.target.parentNode;
+    let mathExpression = document.getElementById('math_expression');
+    if (this.draggedSymbolParentDiv !== mathExpression) {
+      this.mathExpressionDrop(EO, mathExpression);
+    } else {
+      switch (this.draggedSymbol.alt) {
+        case '+':
+        case '-':
+        case '*':
+        case '/':
+        case '=':
+          if (this.draggedSymbol.alt == '=') {
+            checkBtn.style.display = 'none'; //спрячем кнопку "Проверить ответ"
+          }
+          fieldMathSigns.appendChild(this.draggedSymbol);
+          this.draggedSymbolParentDiv.removeChild(this.draggedSymbol);
+          break;
+        default:
+          this.draggedSymbolParentDiv.removeChild(this.draggedSymbol);
+          this.draggedSymbol = null;
+          break;
+      }
+    }
+  },
   checkExpression() {
     //если есть символ "равно" то считаем выражение
     if (/\=/.test(this.getExpr())) {

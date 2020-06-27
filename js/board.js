@@ -88,6 +88,8 @@ let board = {
     //и на двойной клик
     $('.symbol').attr('ondblclick', 'game.symbolDblClick(event)');
 
+    $('.symbol').attr('ontouchstart', 'game.touchClick(event)');
+
     //добавим модалки
     const rightModal = document.createElement('div');
     rightModal.id = 'right_modal';

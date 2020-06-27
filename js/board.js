@@ -113,6 +113,7 @@ let board = {
 
     function finishBtn() {
       players.names[player.name] = player.score;
+      players.updateNames();
       player = {};
       $(this).dialog('close');
     }

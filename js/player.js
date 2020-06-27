@@ -2,7 +2,7 @@
 
 const hashAjaxName = 'ALKHIMOVICH_MATH4KIDS_PLAYERS';
 
-var AjaxHandlerScript = 'http://fe.it-academy.by/AjaxStringStorage2.php';
+var AjaxHandlerScript = 'https://fe.it-academy.by/AjaxStringStorage2.php';
 var UpdatePassword;
 
 let players = {

@@ -3,7 +3,7 @@
 $(document).ready(() => {
   //после загрузки:
   //добавим звуки к пунктам меню
-  let soundLink = document.getElementById('sounds');
+  let soundLink = document.getElementById('menu_sound');
   let menu_items = document.querySelectorAll('.menu_item');
   menu_items.forEach((elem) =>
     elem.addEventListener('mouseenter', () => {

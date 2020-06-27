@@ -14,10 +14,6 @@
   </head>
 
   <body>
-    <!-- //TODO: добавить фоновую музыку
-         //TODO: модалку на реакцию неполного ответа
-         //TODO: дополнить страницу Учеба второй страницей -->
-
     <div class="wrapper">
       <div class="board_wrapper">
         <section id="game"></section>
@@ -33,8 +29,13 @@
         <li class="menu_item"><a href="#best" id="bestBtn">Лучшие результаты</a></li>
       </ul>
     </div>
-    <audio id="sounds" preload="auto">
+    <audio id="menu_sound" preload="auto">
       <source src="snd/menu-item.mp3" />
+    </audio>
+    <!-- iframe ниже нужен как "костыль", чтобы стартовала фоновая музыка -->
+    <iframe src="snd/silence.mp3" allow="autoplay" id="audio" style="display: none"></iframe>
+    <audio autoplay="autoplay" preload="auto">
+      <source src="snd/background.mp3" />
     </audio>
     <script src="js/player.js"></script>
     <script src="js/board.js" defer></script>

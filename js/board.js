@@ -1,60 +1,5 @@
 'use strict';
 
-$(document).ready(() => {
-  //после загрузки:
-  //добавим звуки к пунктам меню
-  let soundLink = document.getElementById('menu_sound');
-  let menu_items = document.querySelectorAll('.menu_item');
-  menu_items.forEach((elem) =>
-    elem.addEventListener('mouseenter', () => {
-      soundLink.play();
-    }),
-  );
-  //загрузим Ajax'ом пользвателей
-  players.load();
-
-  board.initBoard(); //наполним страницы Правила и Учеба
-});
-
-$('#bestBtn').click(() => {
-  //players.names = {}; <----очистка хранилища
-  //players.updateNames();
-  board.showBestPlayers();
-});
-
-//а здесь покажем другой вариант модалки
-//если раскомментировать строку, то сработает вариант который выше
-$('#playBtn').click(() => {
-  //$('#user_name').dialog('open');
-  $.MessageBox({
-    input: true,
-    message: 'Ваше имя?',
-  }).done((data) => {
-    if ($.trim(data)) {
-      $.MessageBox('Привет, <b>' + data + '</b>!');
-      player.name = data;
-    } else {
-      $.MessageBox("Пусть будет 'Без имени'...");
-      player.name = 'Без имени';
-    }
-    player.score = 0;
-    players.addName(player.name, player.score);
-    board.newGame();
-  });
-});
-
-function clickOkBtn() {
-  $(this).dialog('close');
-  player.name = $('#input_user_name').val();
-  player.score = 0;
-  players.addName(player.name, player.score);
-  board.newGame();
-}
-
-function checkChanges(e, ui) {
-  return $('#input_user_name').val() ? true : false;
-}
-
 let board = {
   newGame() {
     //----------- построение секции "Играть" -----------
@@ -245,6 +190,18 @@ let board = {
         return checkChanges();
       },
     });
+
+    function clickOkBtn() {
+      $(this).dialog('close');
+      player.name = $('#input_user_name').val();
+      player.score = 0;
+      players.addName(player.name, player.score);
+      board.newGame();
+    }
+
+    function checkChanges(e, ui) {
+      return $('#input_user_name').val() ? true : false;
+    }
     //отрисуем доску с правилами и учебой
     this.drawRules(), this.drawStudy();
   },
@@ -328,3 +285,52 @@ function switchToStateFromUrlHash() {
   }
 }
 switchToStateFromUrlHash();
+
+$(document).ready(() => {
+  //после загрузки:
+  //добавим звуки к пунктам меню
+  let soundLink = document.getElementById('menu_sound');
+  $('.menu_item').mouseenter(() => {
+    soundLink.play();
+  });
+  /* ниже слушатели на JS, выше тоже, но с помощью jQuery
+  let menu_items = document.querySelectorAll('.menu_item');
+  menu_items.forEach((elem) =>
+    elem.addEventListener('mouseenter', () => {
+      soundLink.play();
+    }),
+  );*/
+
+  //загрузим Ajax'ом пользвателей
+  players.load();
+  //наполним страницы Правила и Учеба
+  board.initBoard();
+});
+
+$('#bestBtn').click(() => {
+  //страница лучших пользователей
+  //players.names = {}; <----очистка хранилища
+  //players.updateNames();
+  board.showBestPlayers();
+});
+
+//здесь покажем другой вариант модалки
+//если раскомментировать строку, то сработает вариант jQuery
+$('#playBtn').click(() => {
+  //$('#user_name').dialog('open');
+  $.MessageBox({
+    input: true,
+    message: 'Ваше имя?',
+  }).done((data) => {
+    if ($.trim(data)) {
+      $.MessageBox('Привет, <b>' + data + '</b>!');
+      player.name = data;
+    } else {
+      $.MessageBox("Пусть будет 'Без имени'...");
+      player.name = 'Без имени';
+    }
+    player.score = 0;
+    players.addName(player.name, player.score);
+    board.newGame();
+  });
+});

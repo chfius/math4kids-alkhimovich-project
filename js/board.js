@@ -66,8 +66,8 @@ let board = {
     const divMathExpr = document.createElement('div');
     divMathExpr.setAttribute('class', 'math_expression');
     divMathExpr.setAttribute('id', 'math_expression');
-    divMathExpr.setAttribute('ondrop', 'mathExpressionDrop(event,this)');
-    divMathExpr.setAttribute('ondragover', 'mathExpressionDragOver(event)');
+    divMathExpr.setAttribute('ondrop', 'game.mathExpressionDrop(event,this)');
+    divMathExpr.setAttribute('ondragover', 'game.mathExpressionDragOver(event)');
     divBoard.appendChild(divMathExpr);
     gameSection.appendChild(divBoard);
 
@@ -75,7 +75,7 @@ let board = {
     const divCheckBtn = document.createElement('div');
     divCheckBtn.setAttribute('class', 'button');
     divCheckBtn.setAttribute('id', 'check_answer');
-    divCheckBtn.setAttribute('onclick', 'checkAnswer()');
+    divCheckBtn.setAttribute('onclick', 'game.checkAnswer()');
     divCheckBtn.innerHTML = 'Проверить ответ';
     gameSection.appendChild(divCheckBtn);
 
@@ -136,12 +136,12 @@ let board = {
     gameSection.appendChild(divMathSign);
 
     //с помощью JQuery повесим обработчиков Drag&Drop на класс symbol
-    $('.numbers').attr('ondrop', 'numbersDrop(event,this)');
-    $('.numbers').attr('ondragover', 'numbersDragOver(event)');
-    $('.symbol').attr('ondragstart', 'symbolDragStart(event)');
-    $('.symbol').attr('ondragend', 'symbolDragEnd(event)');
+    $('.numbers').attr('ondrop', 'game.numbersDrop(event,this)');
+    $('.numbers').attr('ondragover', 'game.numbersDragOver(event)');
+    $('.symbol').attr('ondragstart', 'game.symbolDragStart(event)');
+    $('.symbol').attr('ondragend', 'game.symbolDragEnd(event)');
     //и на двойной клик
-    $('.symbol').attr('ondblclick', 'symbolDblClick(event)');
+    $('.symbol').attr('ondblclick', 'game.symbolDblClick(event)');
 
     //добавим модалки
     const rightModal = document.createElement('div');

@@ -2,8 +2,12 @@
 
 const hashAjaxName = 'ALKHIMOVICH_MATH4KIDS_PLAYERS';
 
-var AjaxHandlerScript = 'https://fe.it-academy.by/AjaxStringStorage2.php';
-var UpdatePassword;
+const AjaxHandlerScript = 'https://fe.it-academy.by/AjaxStringStorage2.php';
+
+let player = {
+  name: 'Без имени',
+  score: 0,
+};
 
 let players = {
   names: {},

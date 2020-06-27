@@ -87,7 +87,7 @@ let board = {
     $('.symbol').attr('ondragend', 'game.symbolDragEnd(event)');
     //и на двойной клик
     $('.symbol').attr('ondblclick', 'game.symbolDblClick(event)');
-
+    // событие клика тача на символ
     $('.symbol').attr('ontouchstart', 'game.touchClick(event)');
 
     //добавим модалки
